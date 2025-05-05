@@ -1,22 +1,53 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h> // Para trabalhar com strings (nomes das cidades)
 
-// Desafio Super Trunfo - Países
-// Tema 1 - Cadastro das Cartas
-// Este código inicial serve como base para o desenvolvimento do sistema de cadastro de cartas de cidades.
-// Siga os comentários para implementar cada parte do desafio.
-//Teste larissa
+// Definição da estrutura da carta de cidade
+struct Carta {
+    int codigo;
+    char nome[50];
+    long long populacao;
+    double area;
+    double pib;
+    int numPontosTuristicos;
+};
 
 int main() {
-    // Sugestão: Defina variáveis separadas para cada atributo da cidade.
-    // Exemplos de atributos: código da cidade, nome, população, área, PIB, número de pontos turísticos.
-    
-    // Cadastro das Cartas:
-    // Sugestão: Utilize a função scanf para capturar as entradas do usuário para cada atributo.
-    // Solicite ao usuário que insira as informações de cada cidade, como o código, nome, população, área, etc.
-    
-    // Exibição dos Dados das Cartas:
-    // Sugestão: Utilize a função printf para exibir as informações das cartas cadastradas de forma clara e organizada.
-    // Exiba os valores inseridos para cada atributo da cidade, um por linha.
+    printf("--- Cadastro de Cartas - Super Trunfo de Países ---\n");
 
-    return 0;
-}
+    // Declaração de uma variável para armazenar os dados de uma carta
+    struct Carta cidade;
+
+    // Cadastro da Carta:
+    printf("\n--- Cadastrando uma nova carta ---\n");
+
+    printf("Código da cidade: ");
+    scanf("%d", &cidade.codigo);
+    // Limpar o buffer do teclado após a leitura de um inteiro
+    while (getchar() != '\n');
+
+    printf("Nome da cidade: ");
+    fgets(cidade.nome, sizeof(cidade.nome), stdin);
+    // Remover a quebra de linha lida pelo fgets
+    cidade.nome[strcspn(cidade.nome, "\n")] = 0;
+
+    printf("População: ");
+    scanf("%lld", &cidade.populacao);
+
+    printf("Área (em km²): ");
+    scanf("%lf", &cidade.area);
+
+    printf("PIB (em milhões de dólares): ");
+    scanf("%lf", &cidade.pib);
+
+    printf("Número de pontos turísticos: ");
+    scanf("%d", &cidade.numPontosTuristicos);
+
+    // Exibição dos Dados da Carta Cadastrada:
+    printf("\n--- Dados da Carta Cadastrada ---\n");
+    printf("Código da cidade: %d\n", cidade.codigo);
+    printf("Nome da cidade: %s\n", cidade.nome);
+    printf("População: %lld\n", cidade.populacao);
+    printf("Área: %.2f km²\n", cidade.area);
+    printf("PIB: %.2f milhões de dólares\n", cidade.pib);
+    printf("Número de pontos tur
